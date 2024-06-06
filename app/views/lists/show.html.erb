@@ -2,14 +2,16 @@
 
   <h1><%= @list.name %></h1>
 
-  <div class="movie-list">
-    <div class="card-list">
+  <div class="row">
+    <div class="col-12 d-flex">
       <% @list.bookmarks.each do |bookmark| %>
-            <%= bookmark.movie.poster_url %>
-            <%= bookmark.movie.title %><br>
-            <%= bookmark.movie.overview %><br>
-            <%= bookmark.movie.rating %>
-            <%= bookmark.comment %>
+        <div class="card card-movie col-3">
+          <%= image_tag("#{bookmark.movie.poster_url}") %>
+          <%= bookmark.movie.title %><br>
+          <%= bookmark.movie.overview %><br>
+          <%= bookmark.movie.rating %>
+          <%= bookmark.comment %><%= link_to "Delete bookmark", bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+        </div>
       <% end %>
     </div>
   </div>
