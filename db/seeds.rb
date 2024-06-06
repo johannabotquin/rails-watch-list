@@ -23,9 +23,13 @@ puts "end"
 
 puts "lists in creation..."
 
-List.create(name: 'Horror')
-List.create(name: 'Drama')
-List.create(name:'Thriller')
-List.create(name: 'Action')
+List.create(name: 'Horror', image_url: 'https://t3.ftcdn.net/jpg/05/94/14/40/360_F_594144081_16zhgX8fUApt3BXFGvOFUQc5OijB06wf.jpg')
+List.create(name: 'Drama', image_url: 'https://www.looper.com/img/gallery/best-drama-movies-of-all-time-ranked/the-green-mile-1660930801.jpg')
+List.create(name:'Thriller', image_url: 'https://assets-prd.ignimgs.com/2022/06/17/best-thriller-thumbnail-1655499110276.jpg')
+List.create(name: 'Action', image_url: 'https://t4.ftcdn.net/jpg/06/35/01/43/360_F_635014373_JTiKYJyGpQ72XvvS6O8XhAWEqb9x69hI.jpg')
+List.create(name: 'Comedy', image_url: 'https://static1.colliderimages.com/wordpress/wp-content/uploads/2023/10/ace-ventura.jpg')
+List.create(name: 'French Movies', image_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTg72Z-ej86qcUZNl_Y4GnfIAK787Bf6dyEMw&s')
+List.create(name: 'Animation', image_url: 'https://joshbalogh.wordpress.com/wp-content/uploads/2021/10/img_4663.jpg?w=1024')
+List.create(name: 'Black & White', image_url: 'https://cdn.aarp.net/content/dam/aarp/entertainment/movies-for-grownups/2022/02/1140-belfast-theater.jpg')
 
 puts  "end"

@@ -1,29 +1,29 @@
-<div class="container">
-
-  <h1><%= @list.name %></h1>
-
-  <div class="row">
-    <div class="col-12 d-flex">
-      <% @list.bookmarks.each do |bookmark| %>
-        <div class="card card-movie col-3">
-          <%= image_tag("#{bookmark.movie.poster_url}") %>
-          <%= bookmark.movie.title %><br>
-          <%= bookmark.movie.overview %><br>
-          <%= bookmark.movie.rating %>
-          <%= bookmark.comment %><%= link_to "Delete bookmark", bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
-        </div>
-      <% end %>
-    </div>
+ <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= @list.image_url %>');">
+      <div class="container">
+        <h1><%= @list.name %></h1>
+      </div>
   </div>
-  <br>
-  <div class="bookmark-form">
-    <%= simple_form_for [@list, @bookmark] do |f| %>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-12 d-flex">
+        <% @list.bookmarks.each do |bookmark| %>
+          <div class="card card-movie col-3">
+            <%= image_tag("#{bookmark.movie.poster_url}") %>
+            <%= bookmark.movie.title %><br>
+            <%= bookmark.movie.overview %><br>
+            <%= bookmark.movie.rating %>
+            <%= bookmark.comment %><%= link_to "Delete bookmark", bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <br>
+    <div class="bookmark-form">
+      <%= simple_form_for [@list, @bookmark] do |f| %>
         <%= f.input :comment %>
         <%= f.input :movie_id, collection: Movie.all %>
         <%= f.button :submit %>
       <% end %>
+    </div>
   </div>
-
-
-  <%= link_to "Back to the main page", lists_path %>
-</div>
