@@ -1,0 +1,27 @@
+<div class="container">
+
+  <h1><%= @list.name %></h1>
+
+  <div class="movie-list">
+    <div class="card-list">
+      <% @list.bookmarks.each do |bookmark| %>
+            <%= bookmark.movie.poster_url %>
+            <%= bookmark.movie.title %><br>
+            <%= bookmark.movie.overview %><br>
+            <%= bookmark.movie.rating %>
+            <%= bookmark.comment %>
+      <% end %>
+    </div>
+  </div>
+  <br>
+  <div class="bookmark-form">
+    <%= simple_form_for [@list, @bookmark] do |f| %>
+        <%= f.input :comment %>
+        <%= f.input :movie_id, collection: Movie.all %>
+        <%= f.button :submit %>
+      <% end %>
+  </div>
+
+
+  <%= link_to "Back to the main page", lists_path %>
+</div>
