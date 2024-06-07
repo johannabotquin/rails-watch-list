@@ -13,9 +13,13 @@
       <div class="d-flex flex-wrap justify-content-between">
         <% @lists.each do |list| %>
           <%= link_to list_path(list) do %>
-            <div class="card-category-list col-4 m-3" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= list.image_url %>');">
+            <% if list.photo.attached? %>
+              <div class="card-category-list col-4 m-3" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path list.photo.key, height: 300, crop: :fill %>')">
+            <% else %>
+              <div class="card-category-list col-4 m-3" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('https://img.freepik.com/free-photo/view-3d-cinema-elements_23-2150720822.jpg')">
+            <% end %>
               <div class="list-card">
-                <h1 class="list-name"> <%=  list.name  %> </h1>
+                <h1 class="list-name"> <%= list.name %> </h1>
               </div>
             </div>
           <% end %>

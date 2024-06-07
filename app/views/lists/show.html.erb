@@ -1,11 +1,21 @@
- <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= @list.image_url %>');">
+
+<% if @list.photo.attached? %>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path(@list.photo.key) %>')">
+  <div class="container">
+    <a class="btn btn-flat" href="#"><%= @list.bookmarks.length %> films</a>
+    <h1><%= @list.name %></h1>
+  </div>
+</div>
+
+<% else %>
+    <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('https://img.freepik.com/free-photo/view-3d-cinema-elements_23-2150720822.jpg')">
       <div class="container">
         <a class="btn btn-flat" href="#"><%= @list.bookmarks.length %> movies</a>
         <h1><%= @list.name %></h1>
       </div>
-
   </div>
-
+  <%= link_to "Delete this list", lists_path, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-gradient" %>
+<% end %>
   <div class="container">
     <div class="row">
       <div class="col-12 d-flex">
