@@ -15,6 +15,8 @@ gem "sassc-rails"
 
 gem "dotenv-rails"
 
+gem "cloudinary"
+
 # Use postgresql as the database for Active Record
 gem "pg", "~> 1.1"
 
@@ -71,3 +73,4 @@ end
 
 gem 'rspec-rails', group: [ :test ]
 gem 'rails-controller-testing', group: [ :test ]
+
