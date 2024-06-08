@@ -2,7 +2,7 @@
 <% if @list.photo.attached? %>
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('<%= cl_image_path(@list.photo.key) %>')">
   <div class="container">
-    <a class="btn btn-flat" href="#"><%= @list.bookmarks.length %> films</a>
+    <a class="btn btn-flat" href="#"><%= @list.bookmarks.length %> film(s)</a>
     <h1><%= @list.name %></h1>
   </div>
 </div>
@@ -14,28 +14,41 @@
         <h1><%= @list.name %></h1>
       </div>
   </div>
-  <%= link_to "Delete this list", lists_path, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-gradient" %>
 <% end %>
+  <div class="delete">
+    <%= link_to "Delete this list", list_path(@list), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "btn btn-gradient" %>
+  </div>
   <div class="container">
     <div class="row">
       <div class="col-12 d-flex">
         <% @list.bookmarks.each do |bookmark| %>
-          <div class="card card-movie col-3">
-            <%= image_tag("#{bookmark.movie.poster_url}") %>
-            <%= bookmark.movie.title %><br>
-            <%= bookmark.movie.overview %><br>
-            <%= bookmark.movie.rating %>
-            <%= bookmark.comment %><%= link_to "Delete bookmark", bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+          <div class="card-trip col-4">
+            <div class="card movie" style="width: 18rem;">
+              <%= image_tag("#{bookmark.movie.poster_url}")%>
+              <div class="card-body">
+                <h3 class="card-title"><strong><%= bookmark.movie.title %></strong></h3>
+                <p class="card-text"><%= bookmark.movie.overview %></p>
+                <br>
+                <h5 class="card-trip-rating"><i class="fa-solid fa-star" style="color: #FFD43B;"></i> <%= bookmark.movie.rating %></h5>
+                <div class="card-bookmark d-flex justify-content-between">
+                  <p><em><%= bookmark.comment %></em></p>
+                  <%= link_to bookmark_path(bookmark), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} do %>
+                    <i class="fa-regular fa-trash-can" style="color: #595d64;"></i>
+                  <% end %>
+                </div>
+              </div>
+            </div>
           </div>
         <% end %>
       </div>
     </div>
+  </div>
     <br>
-    <div class="bookmark-form">
+    <div class="sticky-form">
       <%= simple_form_for [@list, @bookmark] do |f| %>
         <%= f.input :comment %>
         <%= f.input :movie_id, collection: Movie.all %>
-        <%= f.button :submit %>
+        <%= f.button :submit, class: "btn btn-gradient" %>
       <% end %>
     </div>
   </div>

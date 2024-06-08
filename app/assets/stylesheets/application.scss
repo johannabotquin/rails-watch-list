@@ -12,10 +12,33 @@
 @import "pages/index";
 @import "lists/index";
 
+body {
+  font-family: "Comfortaa", sans-serif;;
+}
+
 a {
   text-decoration: none;
 }
 .toto {
   background-size: cover;
   background-position: center;
+}
+
+.create-list {
+  padding: 50px 150px;
+  h1 {
+    padding-bottom: 20px;
+  }
+  .btn {
+    margin-top: 20px;
+  }
+}
+
+.delete {
+  margin: 15px;
+}
+
+.sticky-form {
+  margin: 50px 200px;
+  position: sticky;
 }

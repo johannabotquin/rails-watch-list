@@ -3,13 +3,13 @@
   padding: 8px 24px;
   border-radius: 4px;
   font-weight: bold;
-  background: linear-gradient(#25DD88, #25DD88);
+  background: linear-gradient(#778da9, #778da9);
   transition: background 0.3s ease;
-  border: 1px solid #25DD88;
+  border: 1px solid #778da9;
 }
 
 .btn-gradient:hover {
-  background: linear-gradient(#75D5CB, #75D5CB);
+  background: linear-gradient(#8d99ae, #8d99ae);
   color: white;
 }
 
@@ -27,4 +27,15 @@
 .btn-flat:hover {
   background: #FCBF48;
   color: white;
+}
+
+.btn-delete {
+  color: white;
+  padding: 8px 24px;
+  border-radius: 4px;
+  font-weight: bold;
+  background: linear-gradient(#778da9, #778da9);
+  transition: background 0.3s ease;
+  border: 1px solid #778da9;
+  font-size: 12px;
 }
